@@ -17,8 +17,10 @@
 
 	--light-rose: #ff2056;
 	--light-text: #f3f4f6;
+	--medium-text: #d1d5db;
 	--dark-text: #6a7282;
 	--dg-body: #f1f5f9;
+
 
 	/*Rgba*/
 	--light-rose-rgba: 255, 32, 86;
@@ -35,6 +37,7 @@ html {
 
 body {
 	font-size: 1.6rem;
+	background-color: var(--dg-body);
 }
 
 img {
@@ -62,7 +65,7 @@ a {
 }
 
 h2 {
-    font-size: clamp(3.6rem, 6vw, 5rem);
+	font-size: clamp(3.6rem, 6vw, 5rem);
 }
 
 /* Utilities */
@@ -74,12 +77,11 @@ h2 {
 
 .no-copy {
 	/*no permite la copia del elemento*/
-	user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	user-select: none;
 }
-
 
 /* Hero */
 .hero-container {
@@ -180,7 +182,7 @@ h2 {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    /*Detecta si hay un puntero en dispositivos móviles para ejecutar el hover*/
+	/*Detecta si hay un puntero en dispositivos móviles para ejecutar el hover*/
 	.hero-info a:hover {
 		background-color: color-mix(in srgb, var(--light-rose), black 20%);
 	}
@@ -189,49 +191,161 @@ h2 {
 /* Top Banner */
 
 .top-banner {
-    position: relative;
-    padding-top: 6rem;
-    padding-bottom: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    background-color: var(--light-rose);
+	position: relative;
+	padding-top: 6rem;
+	padding-bottom: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	background-color: var(--light-rose);
 }
 
-.top-banner h2{
-    color: var(--light-text);
+.top-banner h2 {
+	color: var(--light-text);
 }
 
 .top-banner p {
-    color: var(--white);
-    font-size: 2rem;
+	color: var(--white);
+	font-size: 2rem;
 }
 
 .top-banner a {
-    color: var(--white);
-    font-size: 2rem;
-    font-style: italic;
-    text-decoration: underline;
+	color: var(--white);
+	font-size: 2rem;
+	font-style: italic;
+	text-decoration: underline;
 }
 
 .custom-shape-divider-bottom-1771653877 {
-    position: absolute;
-    bottom: -6rem;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(360deg);
+	position: absolute;
+	bottom: -6rem;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(360deg);
 }
 
 .custom-shape-divider-bottom-1771653877 svg {
-    position: relative;
-    display: block;
-    width: calc(166% + 1.3px);
-    height: 76px;
+	position: relative;
+	display: block;
+	width: calc(166% + 1.3px);
+	height: 76px;
 }
 
 .custom-shape-divider-bottom-1771653877 .shape-fill {
-    fill: var(--light-rose);
+	fill: var(--light-rose);
+}
+
+/* Products */
+
+.products {
+	padding-top: 12rem;
+	padding-bottom: 6rem;
+}
+
+.products h2 {
+	position: relative;
+	color: var(--dark-text);
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.products h2::after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: -0.8rem;
+	width: 100%;
+	height: 1rem;
+	border-radius: 0.2rem;
+	background: linear-gradient(
+		to right,
+		var(--light-rose) 50%,
+		var(--dark) 50%
+	);
+}
+
+.products-grid {
+	padding-top: 8rem;
+	display: grid;
+	gap: 2rem;
+}
+@media (min-width: 576px){
+	.products-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1200px){
+	.products-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.product {
+	background-color: var(--white);
+	border-radius: 2rem;
+	box-shadow:0 0 6px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	transition: transform .2s ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.product:hover {
+		transform: translateY(-.5rem);
+	}
+}
+
+.product-info {
+	padding: 1rem;
+}
+
+.product-star {
+	color: var(--yellow);
+}
+
+.product-info h3 {
+	margin-top: .5rem ;
+	margin-bottom: 1rem;
+}
+
+.product-price {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2rem 0;
+}
+
+.product-price span,
+.product-price p {
+	font-size: 2.2rem;
+}
+
+.product-price span {
+	color: var(--medium-text);
+	text-decoration: line-through;
+}
+
+.product-price p {
+	color: var(--light-rose);
+	font-weight: 700;
+}
+
+.product-info button {
+	background-color: var(--light-rose);
+	width: 100%;
+	padding: 1.2rem;
+	border-radius: .5rem;
+	color: var(--white);
+	font-style: italic;
+	margin-top: 1rem;
+	transition: background-color 0.2s ease-in-out;
+}
+
+@media (hover: hover) and (pointer:fine){
+	.product-info button:hover{
+		background-color: color-mix(in srgb,var(--light-rose),black 20%);
+	}
 }
