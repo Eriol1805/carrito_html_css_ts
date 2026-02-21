@@ -1,11 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CakeCommerceApp</title>
+
+  <!-- Basic Icons -->
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet" />
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
+
 <body>
-    
+  <section class="hero-container">
+    <picture class="hero-bg">
+      <source srcset="/assets/images/hero/hero.avif" type="image/avif" />
+      <source srcset="/assets/images/hero/hero.webp" type="image/webp" />
+      <img src="/assets/images/hero/hero.jpg" alt="image hero" />
+    </picture>
+
+    <header class="header container">
+        <!-- Si hay más paginas se pone una etiqueta a para redirigir -->
+        <p class="no-copy">Commerce<span>App</span></p>
+        <nav class="nav">
+          <ul>
+            <li>
+              <button title="botón">
+                <i class="bx bx-cart"></i>
+              </button>
+              <span>0</span>
+            </li>
+          </ul>
+        </nav>
+    </header>
+    <div class="hero-info">
+      <h1>Cake Store</h1>
+      <a href="#">Visit Our Store</a>
+    </div>
+  </section>
 </body>
+
 </html>
