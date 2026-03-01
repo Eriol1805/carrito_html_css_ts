@@ -252,17 +252,17 @@
         <div class="footer-item">
           <h4>Explore</h4>
           <div class="footer-nav">
-          <a href="#">Store</a>
-          <a href="#">Collection</a>
-          <a href="#">Sales</a>
+            <a href="#">Store</a>
+            <a href="#">Collection</a>
+            <a href="#">Sales</a>
           </div>
         </div>
         <div class="footer-item">
           <h4>Help</h4>
           <div class="footer-nav">
-          <a href="#">Contact</a>
-          <a href="#">Shipping</a>
-          <a href="#">Privacy Police</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Privacy Police</a>
           </div>
         </div>
       </div>
@@ -271,6 +271,77 @@
     <p class="footer-copyright">&copy; MarketApp <span>2026</span> All Rights Reserved</p>
 
   </footer>
+
+  <!-- Cart -->
+  <div class="cart" id="cart">
+    <div class="cart-container">
+
+      <div class="cart-header">
+        <h2>Market Cart</h2>
+        <button title="btn-close" type="button" class="btn-close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Del</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <img src="assets/images/products/product-01.jpg" alt="Image product">
+              <span class="product-title">Lorem ipsum dolor sit.</span>
+            </td>
+            <td>
+              <div class="box-quantity">
+                <button title="btn-minus" type="button" class="btn-minus">
+                  <i class="bx bx-minus"></i>
+                </button>
+                <span class="item-quantity">0</span>
+                <button title="btn-plus" type="button" class="btn-plus">
+                  <i class="bx bx-plus"></i>
+                </button>
+              </div>
+            </td>
+            <td class="product-price">$35.00</td>
+            <td>
+              <button title="btn-delete" type="button" class="btn-delete">
+                <i class="bx bx-x"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <td colspan="4">
+            <div class="cart-footer-content" id="cart-footer">
+              <div class="cart-total">
+                <p>Total:</p>
+                <span id="total-price">$120.00</span>
+              </div>
+              <div class="cart-actions">
+                <button type="button" target="_blank" class="btn-buy">
+                  Buy Now <i class="bx bx-whatsapp"></i>
+                </button>
+                <button title="btn-empty" type="button" class="btn-empty">
+                  Empty cart
+                </button>
+              </div>
+
+            </div>
+          </td>
+        </tfoot>
+      </table>
+
+    </div>
+  </div>
 </body>
 
 </html>
