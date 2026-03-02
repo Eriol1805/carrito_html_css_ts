@@ -1,0 +1,2 @@
+console.log('desde el app.ts');
+export {};
