@@ -1,2 +1,4 @@
-console.log('desde el app.ts');
-export {};
+import { initUI } from "./ui/init.js";
+document.addEventListener('DOMContentLoaded', () => {
+    initUI();
+});
