@@ -2,50 +2,50 @@
 export const products = [
     {
         "id": 1,
-        "title": "",
-        "description": "",
+        "title": "Budín de sandias",
+        "description": "Delicioso sabor a sandias frescas, con las bondades de un esponjoso budín.",
         "image": "product-01.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 3000.00,
+        "price": 1950.00
     },
     {
         "id": 2,
-        "title": "",
-        "description": "",
+        "title": "Oreo Cake",
+        "description": "Remonta tu infancia con un sabor único, un gusto a momentos felices.",
         "image": "product-02.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 3600,
+        "price": 1860
     },
     {
         "id": 3,
-        "title": "",
-        "description": "",
+        "title": "Lemon Tower",
+        "description": "El azahar inunda el ambiente y cautiva tus sentidos",
         "image": "product-03.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 2890,
+        "price": 1630
     },
     {
         "id": 4,
-        "title": "",
-        "description": "",
+        "title": "Savage Forest",
+        "description": "Lo natural es la esencia primordial, permite que recupere tu conexión. ",
         "image": "product-04.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 3750,
+        "price": 2100
     },
     {
         "id": 5,
-        "title": "",
-        "description": "",
+        "title": "Rose Muffins",
+        "description": "Suaves y delicados bocadillos con notas de cereza. ",
         "image": "product-05.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 1300,
+        "price": 700
     },
     {
         "id": 6,
-        "title": "",
-        "description": "",
+        "title": "Donuts Glace",
+        "description": "Clásicas, dulces, un placer diario que rejuvenecen el alma.",
         "image": "product-06.jpg",
-        "previousPrice": 0.00,
-        "price": 0.00
+        "previousPrice": 1100,
+        "price": 600
     }
 ]
