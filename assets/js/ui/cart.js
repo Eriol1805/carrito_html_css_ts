@@ -26,3 +26,8 @@ export const initCartInteraction = () => {
         }
     });
 };
+export const renderCart = (cartItems) => {
+    cartItems.forEach(item => {
+        console.log(item);
+    });
+};

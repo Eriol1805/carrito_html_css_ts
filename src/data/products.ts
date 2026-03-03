@@ -19,7 +19,7 @@ export const products = [
     {
         "id": 3,
         "title": "Lemon Tower",
-        "description": "El azahar inunda el ambiente y cautiva tus sentidos",
+        "description": "El azahar inunda el ambiente y cautiva tus sentidos, la primavera está aquí.",
         "image": "product-03.jpg",
         "previousPrice": 2890,
         "price": 1630

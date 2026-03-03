@@ -1,4 +1,5 @@
 import { uiElements } from "../selectors.js";
+import type { CartItem } from "../types/index.js";
 
 export const toggleCart = (show: boolean) => {
 	if (!uiElements.cart) return;
@@ -30,3 +31,9 @@ export const initCartInteraction = () => {
 		}
 	});
 };
+
+export const renderCart = (cartItems: CartItem[]) => {
+	cartItems.forEach (item =>{
+		console.log(item);
+	})
+}

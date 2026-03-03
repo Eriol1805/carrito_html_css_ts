@@ -23,7 +23,7 @@ export const renderProductList = (products) => {
                 <span>${formatCurrency(product.previousPrice)}</span>
                 <p>${formatCurrency(product.price)}</p>
             </div>
-            <button type="button" class="btn-add">Add Cart</button>
+            <button type="button" class="add-btn" data-id="${product.id}">Add Cart</button>
             </div>
         </div> <!-- .product-->
         `;
