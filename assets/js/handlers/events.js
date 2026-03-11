@@ -1,6 +1,7 @@
 import { products } from "../data/products.js";
 import { addToCart } from "../logic/cart.js";
 import { renderCart } from "../ui/cart.js";
+import { showAlerts } from "../ui/globals.js";
 let myCart = [];
 export const setupAppListeners = () => {
     document.addEventListener("click", (e) => {
@@ -12,6 +13,7 @@ export const setupAppListeners = () => {
             if (product) {
                 myCart = addToCart(myCart, product);
                 renderCart(myCart);
+                showAlerts('Product added successfully', 'success');
             }
         }
     });

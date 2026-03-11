@@ -2,6 +2,7 @@ import {products} from "../data/products.js";
 import type {CartItem} from "../types/index.js";
 import { addToCart } from "../logic/cart.js";
 import { renderCart } from "../ui/cart.js";
+import { showAlerts } from "../ui/globals.js";
 
 let myCart: CartItem[] = [];
 
@@ -19,6 +20,7 @@ export const setupAppListeners = () => {
 				myCart = addToCart(myCart, product);
 
                 renderCart(myCart);
+				showAlerts('Product added successfully', 'success');
 			}
 		}
 	});

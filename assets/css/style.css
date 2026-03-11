@@ -706,3 +706,66 @@ h2 {
 		box-shadow: 0 4px 12px rgba(228, 117, 135, 0.3);
 	}
 }
+
+/* Alerts */
+/* Estilos base de la alerta */
+
+.alert {
+	position: fixed;
+	bottom: 10rem; /*Posición final visible*/
+	left: 50%;
+
+	/* Centrado horizontal exacto */
+	transform: translateX(-50%);
+
+	/* Diseño visual */
+	padding: 4rem 6rem;
+	border-radius: 1rem;
+	color: var(--white);
+	font-weight: 600;
+	font-size: 1.8rem;
+	box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.3);
+	z-index: 3000;
+
+	/* La animación: 4segundos en total. ejecuta 'slideInAndOut' */
+	animation: slideInAndOut 4s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.alert:hover {
+	animation-play-state: paused;
+}
+
+/* Colores */
+.alert.success {
+	background-color: var(--green);
+}
+.alert.error {
+	background-color: var(--red);
+}
+
+/* KEYFRAMES: La línea de tiempo de los 4 segundos */
+@keyframes slideInAndOut {
+	/* 0%: Empieza escondido abajo */
+	0% {
+		transform: translate(-50%, 100%); /* -50% X (centro), 100% Y (abajo)*/
+		opacity: 0;
+	}
+
+	/* 10%: Sube rápido (tarda aproximadamente 0.4 seg) */
+	10% {
+		transform: translate(-50%, 0); /* Posición original*/
+		opacity: 1;
+	}
+	
+	/* 90%: Se queda quieto (espera visible) */
+	90% {
+		transform: translate(-50%, 0);
+		opacity: 1;
+	}
+
+	/* 100%: Se vuelve a ir abajo o desvanece */
+	100% {
+		transform: translate(-50%, 100%);
+		opacity: 0;
+	}
+}
