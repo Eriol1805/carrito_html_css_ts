@@ -10,7 +10,31 @@ export const addToCart = (cart: CartItem[], product: Product): CartItem[] => {
 				: item,
 		);
 	} else {
-        const newItem: CartItem = {...product, quantity: 1};
+		const newItem: CartItem = {...product, quantity: 1};
 		return [...cart, newItem];
 	}
+};
+
+export const increaseQuantity = (cart: CartItem[], id: CartItem["id"]) => {
+	return cart.map((item) =>
+		item.id === id && item.quantity < 12
+			? {...item, quantity: item.quantity + 1}
+			: item
+	);
+};
+
+export const decreaseQuantity = (cart: CartItem[], id: CartItem["id"]) => {
+	return cart.map((item) =>
+		item.id === id && item.quantity > 1
+			? {...item, quantity: item.quantity - 1}
+			: item
+	);
+};
+
+export const deleteItem = (cart: CartItem[], id: CartItem["id"]) => {
+	return cart.map((item) =>
+		item.id === id && item.quantity > 1
+			? {...item, quantity: item.quantity - 1}
+			: item
+	);
 };

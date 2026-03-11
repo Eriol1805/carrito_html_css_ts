@@ -2,6 +2,7 @@ import {uiElements} from "../selectors.js";
 import type {CartItem} from "../types/index.js";
 import {scapeHTML} from "../logic/security.js";
 import {formatCurrency} from "../logic/format.js";
+import { setupAppListeners } from "../handlers/events.js";
 
 export const toggleCart = (show: boolean) => {
 	if (!uiElements.cart) return;
@@ -51,7 +52,7 @@ export const renderCart = (cartItems: CartItem[]) => {
 		const totalItemPrice = item.price * item.quantity;
 
 		const html = ` 
-		<tr>
+		<tr class="row-cart" data-id="${item.id}">
             <td>
             	<img src="assets/images/products/${scapeHTML(item.image)}" alt="Image product">
             	<span class="product-title">${scapeHTML(item.title)}</span>
