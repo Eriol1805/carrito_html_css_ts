@@ -3,5 +3,8 @@ export const uiElements = {
 	btnClose : document.querySelector<HTMLButtonElement>(".btn-close"),
 	cart : document.querySelector<HTMLDivElement>("#cart"),
 	container : document.querySelector<HTMLDivElement>("#container-products"),
-	currentDate : document.querySelector<HTMLSpanElement>("#current-date")
+	currentDate : document.querySelector<HTMLSpanElement>("#current-date"),
+	cartBox : document.querySelector<HTMLTableSectionElement>('#cart-box'),
+	cartFooter : document.querySelector<HTMLDivElement>('#cart-footer')
+
 }

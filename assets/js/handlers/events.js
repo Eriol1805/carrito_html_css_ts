@@ -3,6 +3,9 @@ import { addToCart } from "../logic/cart.js";
 import { renderCart } from "../ui/cart.js";
 import { showAlerts } from "../ui/globals.js";
 let myCart = [];
+export const initCartState = () => {
+    renderCart(myCart);
+};
 export const setupAppListeners = () => {
     document.addEventListener("click", (e) => {
         const target = e.target;

@@ -6,6 +6,10 @@ import { showAlerts } from "../ui/globals.js";
 
 let myCart: CartItem[] = [];
 
+export const initCartState = () => {
+	renderCart (myCart);
+}
+
 export const setupAppListeners = () => {
 	document.addEventListener("click", (e: MouseEvent) => {
 		const target = e.target as HTMLElement;
