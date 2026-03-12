@@ -59,9 +59,9 @@ export const setupAppListeners = () => {
 		};
 
 		if (target.closest(".btn-empty")) {
-			const comfirmEmpty = confirm("Are you sure you want to empty the cart?");
+			const confirmEmpty = confirm("Are you sure you want to empty the cart?");
 
-			if (!comfirmEmpty) return;
+			if (!confirmEmpty) return;
 			myCart = [];
 			renderCart(myCart);
 			showAlerts("Cart successfully empty.", "success");
