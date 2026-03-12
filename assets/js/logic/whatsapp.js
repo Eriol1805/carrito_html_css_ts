@@ -5,7 +5,7 @@ export const generateWhatsAppLink = (cart) => {
     const baseUrl = window.location.origin; // Get the base URL of the current page
     let message = `Hello! I would like to place an order from your store. Here are the details:\n\n`;
     cart.forEach((item) => {
-        const imageUrl = `${baseUrl}/assets/images/products/${item.image}`;
+        const imageUrl = `${baseUrl}/carrito_html_css_ts/assets/images/products/${item.image}`;
         message += `Product: ${item.title}\n`;
         message += `Price: $${formatCurrency(item.price)}\n`;
         message += `Quantity: ${item.quantity})\n`;
