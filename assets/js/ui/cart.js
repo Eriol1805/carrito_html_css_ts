@@ -74,9 +74,9 @@ export const renderCart = (cartItems) => {
     if (uiElements.totalPrice) {
         uiElements.totalPrice.textContent = formatCurrency(total);
     }
-    updateCartBadget(cartItems);
+    updateCartBadge(cartItems);
 };
-export const updateCartBadget = (cart) => {
+export const updateCartBadge = (cart) => {
     if (!uiElements.cartCount)
         return;
     const total = getCartTotalItems(cart);
