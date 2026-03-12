@@ -3,6 +3,7 @@ import { addToCart, increaseQuantity, decreaseQuantity, destroyItem, } from "../
 import { renderCart, toggleCart } from "../ui/cart.js";
 import { showAlerts } from "../ui/globals.js";
 import { loadCartFromStorage, saveCartToStorage } from "../logic/storage.js";
+import { generateWhatsAppLink } from "../logic/whatsapp.js";
 let myCart = loadCartFromStorage();
 export const initCartState = () => {
     renderCart(myCart);
@@ -55,6 +56,18 @@ export const setupAppListeners = () => {
             showAlerts("Cart successfully empty.", "success");
             toggleCart(false);
             return;
+        }
+        if (target.closest(".btn-buy")) {
+            const confirmBuy = confirm("Are you sure you want to buy these products?");
+            if (!confirmBuy)
+                return;
+            const link = generateWhatsAppLink(myCart);
+            window.open(link, "_blank");
+            myCart = [];
+            saveCartToStorage(myCart);
+            renderCart(myCart);
+            showAlerts("Thank you for your purchase!", "success");
+            toggleCart(false);
         }
     });
 };
