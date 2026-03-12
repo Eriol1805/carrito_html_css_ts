@@ -2,7 +2,8 @@ import { products } from "../data/products.js";
 import { addToCart, increaseQuantity, decreaseQuantity, destroyItem, } from "../logic/cart.js";
 import { renderCart, toggleCart } from "../ui/cart.js";
 import { showAlerts } from "../ui/globals.js";
-let myCart = [];
+import { loadCartFromStorage, saveCartToStorage } from "../logic/storage.js";
+let myCart = loadCartFromStorage();
 export const initCartState = () => {
     renderCart(myCart);
 };
@@ -16,6 +17,7 @@ export const setupAppListeners = () => {
             if (product) {
                 myCart = addToCart(myCart, product);
                 renderCart(myCart);
+                saveCartToStorage(myCart);
                 showAlerts("Product added successfully", "success");
             }
         }
@@ -24,16 +26,19 @@ export const setupAppListeners = () => {
             const productId = Number(rowCart.dataset.id);
             if (target.closest(".btn-plus")) {
                 myCart = increaseQuantity(myCart, productId);
+                saveCartToStorage(myCart);
                 renderCart(myCart);
                 return;
             }
             if (target.closest(".btn-minus")) {
                 myCart = decreaseQuantity(myCart, productId);
+                saveCartToStorage(myCart);
                 renderCart(myCart);
                 return;
             }
             if (target.closest(".btn-delete")) {
                 myCart = destroyItem(myCart, productId);
+                saveCartToStorage(myCart);
                 showAlerts("Product successfully remove.", "success");
                 renderCart(myCart);
                 return;
@@ -45,6 +50,7 @@ export const setupAppListeners = () => {
             if (!confirmEmpty)
                 return;
             myCart = [];
+            saveCartToStorage(myCart);
             renderCart(myCart);
             showAlerts("Cart successfully empty.", "success");
             toggleCart(false);
