@@ -20,8 +20,12 @@ export const decreaseQuantity = (cart, id) => {
         ? { ...item, quantity: item.quantity - 1 }
         : item);
 };
-export const deleteItem = (cart, id) => {
-    return cart.map((item) => item.id === id && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item);
+export const destroyItem = (cart, id) => {
+    return cart.filter(item => item.id !== id);
+};
+export const getCartTotal = (cart) => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+export const getCartTotalItems = (cart) => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
 };

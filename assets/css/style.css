@@ -732,7 +732,7 @@ h2 {
 }
 
 .alert:hover {
-	animation-play-state: paused;
+	animation-play-state: pau;
 }
 
 /* Colores */

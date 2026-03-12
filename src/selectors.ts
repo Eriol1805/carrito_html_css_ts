@@ -5,6 +5,7 @@ export const uiElements = {
 	container : document.querySelector<HTMLDivElement>("#container-products"),
 	currentDate : document.querySelector<HTMLSpanElement>("#current-date"),
 	cartBox : document.querySelector<HTMLTableSectionElement>('#cart-box'),
-	cartFooter : document.querySelector<HTMLDivElement>('#cart-footer')
-
+	cartFooter : document.querySelector<HTMLDivElement>('#cart-footer'),
+	totalPrice: document.querySelector<HTMLSpanElement>('#total-price'),
+	cartCount: document.querySelector<HTMLSpanElement>('#cart-count')
 }

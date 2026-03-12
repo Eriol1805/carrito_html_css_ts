@@ -2,7 +2,8 @@ import {uiElements} from "../selectors.js";
 import type {CartItem} from "../types/index.js";
 import {scapeHTML} from "../logic/security.js";
 import {formatCurrency} from "../logic/format.js";
-import { setupAppListeners } from "../handlers/events.js";
+import {setupAppListeners} from "../handlers/events.js";
+import {getCartTotal, getCartTotalItems} from "../logic/cart.js";
 
 export const toggleCart = (show: boolean) => {
 	if (!uiElements.cart) return;
@@ -46,7 +47,7 @@ export const renderCart = (cartItems: CartItem[]) => {
 		return;
 	}
 
-	uiElements.cartFooter.style.display = 'flex';
+	uiElements.cartFooter.style.display = "flex";
 
 	cartItems.forEach((item) => {
 		const totalItemPrice = item.price * item.quantity;
@@ -78,4 +79,23 @@ export const renderCart = (cartItems: CartItem[]) => {
 		`;
 		uiElements.cartBox?.insertAdjacentHTML("beforeend", html);
 	});
+
+	const total = getCartTotal(cartItems);
+	if (uiElements.totalPrice) {
+		uiElements.totalPrice.textContent = formatCurrency(total);
+	}
+
+	updateCartBadget(cartItems);
+};
+
+export const updateCartBadget = (cart: CartItem[]) => {
+	if (!uiElements.cartCount) return;
+
+	const total = getCartTotalItems(cart);
+
+	if (total > 0) {
+		uiElements.cartCount.textContent = total.toString();
+	} else {
+		uiElements.cartCount.textContent = "0";
+	}
 };

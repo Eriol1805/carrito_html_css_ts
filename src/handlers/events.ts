@@ -1,6 +1,6 @@
 import {products} from "../data/products.js";
 import type {CartItem} from "../types/index.js";
-import {addToCart, increaseQuantity, decreaseQuantity} from "../logic/cart.js";
+import {addToCart, increaseQuantity, decreaseQuantity, destroyItem} from "../logic/cart.js";
 import {renderCart} from "../ui/cart.js";
 import {showAlerts} from "../ui/globals.js";
 
@@ -42,6 +42,13 @@ export const setupAppListeners = () => {
 
 		if (target.closest(".btn-minus")) {
 			myCart = decreaseQuantity(myCart, productId);
+			renderCart(myCart);
+			return;		
+		}
+		
+		if (target.closest(".btn-delete")) {
+			myCart = destroyItem(myCart, productId);
+			showAlerts('Product successfully remove.', 'success');
 			renderCart(myCart);
 			return;		
 		}
