@@ -1,6 +1,6 @@
 import { products } from "../data/products.js";
-import { addToCart, increaseQuantity, decreaseQuantity, destroyItem } from "../logic/cart.js";
-import { renderCart } from "../ui/cart.js";
+import { addToCart, increaseQuantity, decreaseQuantity, destroyItem, } from "../logic/cart.js";
+import { renderCart, toggleCart } from "../ui/cart.js";
 import { showAlerts } from "../ui/globals.js";
 let myCart = [];
 export const initCartState = () => {
@@ -20,23 +20,34 @@ export const setupAppListeners = () => {
             }
         }
         const rowCart = target.closest(".row-cart");
-        if (!rowCart)
-            return;
-        const productId = Number(rowCart.dataset.id);
-        if (target.closest(".btn-plus")) {
-            myCart = increaseQuantity(myCart, productId);
-            renderCart(myCart);
-            return;
+        if (rowCart) {
+            const productId = Number(rowCart.dataset.id);
+            if (target.closest(".btn-plus")) {
+                myCart = increaseQuantity(myCart, productId);
+                renderCart(myCart);
+                return;
+            }
+            if (target.closest(".btn-minus")) {
+                myCart = decreaseQuantity(myCart, productId);
+                renderCart(myCart);
+                return;
+            }
+            if (target.closest(".btn-delete")) {
+                myCart = destroyItem(myCart, productId);
+                showAlerts("Product successfully remove.", "success");
+                renderCart(myCart);
+                return;
+            }
         }
-        if (target.closest(".btn-minus")) {
-            myCart = decreaseQuantity(myCart, productId);
+        ;
+        if (target.closest(".btn-empty")) {
+            const comfirmEmpty = confirm("Are you sure you want to empty the cart?");
+            if (!comfirmEmpty)
+                return;
+            myCart = [];
             renderCart(myCart);
-            return;
-        }
-        if (target.closest(".btn-delete")) {
-            myCart = destroyItem(myCart, productId);
-            showAlerts('Product successfully remove.', 'success');
-            renderCart(myCart);
+            showAlerts("Cart successfully empty.", "success");
+            toggleCart(false);
             return;
         }
     });

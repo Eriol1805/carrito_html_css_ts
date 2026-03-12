@@ -38,6 +38,7 @@ export const initCartInteraction = () => {
 export const renderCart = (cartItems: CartItem[]) => {
 	if (!uiElements.cartBox || !uiElements.cartFooter) return;
 
+		updateCartBadge(cartItems);
 	uiElements.cartBox?.replaceChildren();
 
 	if (cartItems.length === 0) {
