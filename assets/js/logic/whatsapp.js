@@ -8,7 +8,7 @@ export const generateWhatsAppLink = (cart) => {
         const imageUrl = `${baseUrl}/carrito_html_css_ts/assets/images/products/${item.image}`;
         message += `Product: ${item.title}\n`;
         message += `Price: $${formatCurrency(item.price)}\n`;
-        message += `Quantity: ${item.quantity})\n`;
+        message += `Quantity: ${item.quantity}\n`;
         message += `ViewImage: ${imageUrl}\n`;
         message += `Subtotal: $${formatCurrency(item.price * item.quantity)}\n`;
     });
