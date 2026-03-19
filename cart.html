@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart - MarketApp</title>
+
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet" />
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <p class="no-copy">Market<span>App</span></p>
+      </a>
+      <nav class="nav">
+        <ul>
+          <li>
+            <span id="cart-count">0</span>
+            <i class="bx bx-cart-alt"></i>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cart-page">
+    <div class="container">
+      <div class="cart-page-header">
+        <h1>Shopping Cart</h1>
+        <a href="index.html" class="btn-secondary">
+          <i class="bx bx-arrow-back"></i>
+          Continue Shopping
+        </a>
+      </div>
+
+      <div class="cart-layout">
+        <section class="cart-items-section">
+          <table class="table cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody id="cart-box"></tbody>
+          </table>
+        </section>
+
+        <aside class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="total-price">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="total-price-summary">$0.00</span>
+          </div>
+          <div class="cart-actions" id="cart-footer">
+            <button type="button" class="btn-checkout">
+              <i class="bx bxl-whatsapp"></i>
+              Proceed to Checkout
+            </button>
+            <button type="button" class="btn-empty">Empty Cart</button>
+          </div>
+        </aside>
+      </div>
+
+      <div class="cart-empty-message" id="cart-empty-message" style="display: none;">
+        <i class="bx bx-cart-alt"></i>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any products yet.</p>
+        <a href="index.html" class="btn-primary">Start Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid container">
+        <div class="footer-item">
+          <h4>MarketApp</h4>
+          <p>Turn a sweet day into a sweet life</p>
+        </div>
+        <div class="footer-item">
+          <h4>Explore</h4>
+          <div class="footer-nav">
+            <a href="index.html">Store</a>
+            <a href="#">Collection</a>
+            <a href="#">Sales</a>
+          </div>
+        </div>
+        <div class="footer-item">
+          <h4>Help</h4>
+          <div class="footer-nav">
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Privacy Police</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copyright">&copy; MarketApp <span id="current-date"></span> All Rights Reserved</p>
+  </footer>
+
+  <script src="assets/js/pages/cart.js" type="module"></script>
+</body>
+
+</html>
