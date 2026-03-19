@@ -14,6 +14,8 @@ export const setupAppListeners = () => {
         const addBtn = target.closest(".add-btn");
         if (addBtn) {
             const id = Number(addBtn.dataset.id);
+            if (isNaN(id))
+                return;
             const product = products.find((p) => p.id === id);
             if (product) {
                 myCart = addToCart(myCart, product);

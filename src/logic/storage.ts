@@ -7,6 +7,12 @@ export const saveCartToStorage = (cart: CartItem[]) => {
 };
 
 export const loadCartFromStorage = (): CartItem[] => {
-    const cart = localStorage.getItem(CART_STORAGE_KEY);
-    return cart ? JSON.parse(cart) : [];
+    try {
+        const cart = localStorage.getItem(CART_STORAGE_KEY);
+        return cart ? JSON.parse(cart) : [];
+    } catch {
+        console.warn("Failed to parse cart from storage, resetting.");
+        localStorage.removeItem(CART_STORAGE_KEY);
+        return [];
+    }
 };

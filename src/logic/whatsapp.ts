@@ -2,9 +2,13 @@ import type {CartItem} from "../types/index.js";
 import { getCartTotal } from "./cart.js";
 import { formatCurrency } from "./format.js";
 
+const WHATSAPP_CONFIG = {
+    phoneNumber: "2364326229",
+} as const;
+
 export const generateWhatsAppLink = (cart: CartItem[]): string => {
-	const phoneNumber = "2364326229"; // Replace with your WhatsApp number
-	const baseUrl = window.location.origin; // Get the base URL of the current page
+	const phoneNumber = WHATSAPP_CONFIG.phoneNumber;
+	const baseUrl = window.location.origin;
 
 	let message = `Hello! I would like to place an order from your store. Here are the details:\n\n`;
 

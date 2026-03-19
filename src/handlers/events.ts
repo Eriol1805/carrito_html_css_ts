@@ -25,6 +25,8 @@ export const setupAppListeners = () => {
 
 		if (addBtn) {
 			const id = Number((addBtn as HTMLDataElement).dataset.id);
+			if (isNaN(id)) return;
+			
 			const product = products.find((p) => p.id === id);
 
 			if (product) {
