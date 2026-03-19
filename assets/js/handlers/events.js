@@ -1,12 +1,12 @@
 import { products } from "../data/products.js";
-import { addToCart, increaseQuantity, decreaseQuantity, destroyItem, } from "../logic/cart.js";
-import { renderCart, toggleCart } from "../ui/cart.js";
-import { showAlerts } from "../ui/globals.js";
+import { addToCart, increaseQuantity, decreaseQuantity, destroyItem, getCartTotal } from "../logic/cart.js";
 import { loadCartFromStorage, saveCartToStorage } from "../logic/storage.js";
-import { generateWhatsAppLink } from "../logic/whatsapp.js";
+import { showAlerts, renderCart } from "../ui/globals.js";
+import { updateCartBadge, toggleCart } from "../ui/cart.js";
 let myCart = loadCartFromStorage();
 export const initCartState = () => {
     renderCart(myCart);
+    updateCartBadge();
 };
 export const setupAppListeners = () => {
     document.addEventListener("click", (e) => {
@@ -19,24 +19,29 @@ export const setupAppListeners = () => {
             const product = products.find((p) => p.id === id);
             if (product) {
                 myCart = addToCart(myCart, product);
-                renderCart(myCart);
                 saveCartToStorage(myCart);
+                renderCart(myCart);
+                updateCartBadge();
                 showAlerts("Product added successfully", "success");
             }
         }
         const rowCart = target.closest(".row-cart");
         if (rowCart) {
             const productId = Number(rowCart.dataset.id);
+            if (isNaN(productId))
+                return;
             if (target.closest(".btn-plus")) {
                 myCart = increaseQuantity(myCart, productId);
                 saveCartToStorage(myCart);
                 renderCart(myCart);
+                updateCartBadge();
                 return;
             }
             if (target.closest(".btn-minus")) {
                 myCart = decreaseQuantity(myCart, productId);
                 saveCartToStorage(myCart);
                 renderCart(myCart);
+                updateCartBadge();
                 return;
             }
             if (target.closest(".btn-delete")) {
@@ -44,10 +49,10 @@ export const setupAppListeners = () => {
                 saveCartToStorage(myCart);
                 showAlerts("Product successfully remove.", "success");
                 renderCart(myCart);
+                updateCartBadge();
                 return;
             }
         }
-        ;
         if (target.closest(".btn-empty")) {
             const confirmEmpty = confirm("Are you sure you want to empty the cart?");
             if (!confirmEmpty)
@@ -55,21 +60,10 @@ export const setupAppListeners = () => {
             myCart = [];
             saveCartToStorage(myCart);
             renderCart(myCart);
+            updateCartBadge();
             showAlerts("Cart successfully empty.", "success");
             toggleCart(false);
             return;
-        }
-        if (target.closest(".btn-buy")) {
-            const confirmBuy = confirm("Are you sure you want to buy these products?");
-            if (!confirmBuy)
-                return;
-            const link = generateWhatsAppLink(myCart);
-            window.open(link, "_blank");
-            myCart = [];
-            saveCartToStorage(myCart);
-            renderCart(myCart);
-            showAlerts("Thank you for your purchase!", "success");
-            toggleCart(false);
         }
     });
 };

@@ -1,20 +1,15 @@
 import {products} from "../data/products.js";
 import type {CartItem} from "../types/index.js";
-import {
-	addToCart,
-	increaseQuantity,
-	decreaseQuantity,
-	destroyItem,
-} from "../logic/cart.js";
-import {renderCart, toggleCart} from "../ui/cart.js";
-import {showAlerts} from "../ui/globals.js";
-import { loadCartFromStorage, saveCartToStorage } from "../logic/storage.js";
-import { generateWhatsAppLink } from "../logic/whatsapp.js";
+import {addToCart, increaseQuantity, decreaseQuantity, destroyItem, getCartTotal} from "../logic/cart.js";
+import {loadCartFromStorage, saveCartToStorage} from "../logic/storage.js";
+import {showAlerts, renderCart} from "../ui/globals.js";
+import {updateCartBadge, toggleCart} from "../ui/cart.js";
 
 let myCart: CartItem[] = loadCartFromStorage();
 
 export const initCartState = () => {
 	renderCart(myCart);
+	updateCartBadge();
 };
 
 export const setupAppListeners = () => {
@@ -26,13 +21,14 @@ export const setupAppListeners = () => {
 		if (addBtn) {
 			const id = Number((addBtn as HTMLDataElement).dataset.id);
 			if (isNaN(id)) return;
-			
+
 			const product = products.find((p) => p.id === id);
 
 			if (product) {
 				myCart = addToCart(myCart, product);
-				renderCart(myCart);
 				saveCartToStorage(myCart);
+				renderCart(myCart);
+				updateCartBadge();
 				showAlerts("Product added successfully", "success");
 			}
 		}
@@ -41,11 +37,13 @@ export const setupAppListeners = () => {
 
 		if (rowCart) {
 			const productId = Number((rowCart as HTMLElement).dataset.id);
+			if (isNaN(productId)) return;
 
 			if (target.closest(".btn-plus")) {
 				myCart = increaseQuantity(myCart, productId);
 				saveCartToStorage(myCart);
 				renderCart(myCart);
+				updateCartBadge();
 				return;
 			}
 
@@ -53,6 +51,7 @@ export const setupAppListeners = () => {
 				myCart = decreaseQuantity(myCart, productId);
 				saveCartToStorage(myCart);
 				renderCart(myCart);
+				updateCartBadge();
 				return;
 			}
 
@@ -61,9 +60,10 @@ export const setupAppListeners = () => {
 				saveCartToStorage(myCart);
 				showAlerts("Product successfully remove.", "success");
 				renderCart(myCart);
+				updateCartBadge();
 				return;
 			}
-		};
+		}
 
 		if (target.closest(".btn-empty")) {
 			const confirmEmpty = confirm("Are you sure you want to empty the cart?");
@@ -72,24 +72,10 @@ export const setupAppListeners = () => {
 			myCart = [];
 			saveCartToStorage(myCart);
 			renderCart(myCart);
+			updateCartBadge();
 			showAlerts("Cart successfully empty.", "success");
 			toggleCart(false);
 			return;
-		}
-
-		if (target.closest(".btn-buy")) {
-			const confirmBuy = confirm("Are you sure you want to buy these products?");
-
-			if (!confirmBuy) return;
-
-			const link = generateWhatsAppLink(myCart);
-			window.open(link, "_blank");
-
-			myCart = [];
-			saveCartToStorage(myCart);
-			renderCart(myCart);
-			showAlerts("Thank you for your purchase!", "success");
-			toggleCart(false);
 		}
 	});
 };

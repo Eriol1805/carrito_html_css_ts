@@ -4,8 +4,8 @@ export const uiElements = {
     cart: document.querySelector("#cart"),
     container: document.querySelector("#container-products"),
     currentDate: document.querySelector("#current-date"),
-    cartBox: document.querySelector('#cart-box'),
-    cartFooter: document.querySelector('#cart-footer'),
-    totalPrice: document.querySelector('#total-price'),
-    cartCount: document.querySelector('#cart-count')
+    cartBox: document.querySelector("#cart-box"),
+    cartFooter: document.querySelector("#cart-footer"),
+    totalPrice: document.querySelector("#total-price"),
+    cartCount: document.querySelector("#cart-count"),
 };
